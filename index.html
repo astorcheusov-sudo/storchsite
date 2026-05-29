@@ -69,12 +69,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-co
 
 
 .section{max-width:1100px;margin:0 auto;padding:6rem 3rem;border-top:1px solid var(--gray-light)}
+.section--dark{padding-left:calc((100vw - 1100px)/2 + 3rem);padding-right:calc((100vw - 1100px)/2 + 3rem)}
 .section-head{display:grid;grid-template-columns:1fr auto;align-items:baseline;margin-bottom:3rem}
 .section-title{font-family:'Unbounded',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:0.04em;line-height:1.25}
 .section-title em{font-style:normal;font-weight:400;color:var(--khaki)}
 .section-sub{font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid)}
 .section-desc{font-size:0.9rem;color:var(--gray-mid);margin-top:-1.5rem;margin-bottom:2.5rem;max-width:520px;line-height:1.7}
-.section--dark{background:#0d1f2d;border-top:none;border-radius:0}
+.section--dark{background:#0d1f2d;border-top:none;border-radius:0;max-width:100%;width:100%}
+.section--dark .books-grid{max-width:1100px;margin:0 auto}
 .section--dark .section-title{color:#f0f4f8}
 .section--dark .section-title em{color:#7ab8d4}
 .section--dark .section-desc{color:rgba(255,255,255,0.45)}
@@ -82,7 +84,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-co
 .section--dark .book-author{color:rgba(255,255,255,0.4)}
 .section--dark .book-cover{background:#1a3347}
 .section-desc{font-size:0.9rem;color:var(--gray-mid);margin-top:-1.5rem;margin-bottom:2.5rem;max-width:520px;line-height:1.7}
-.section--dark{background:#0d1f2d;border-top:none;border-radius:0}
+.section--dark{background:#0d1f2d;border-top:none;border-radius:0;max-width:100%;width:100%}
+.section--dark .books-grid{max-width:1100px;margin:0 auto}
 .section--dark .section-title{color:#f0f4f8}
 .section--dark .section-title em{color:#7ab8d4}
 .section--dark .section-desc{color:rgba(255,255,255,0.45)}
@@ -175,11 +178,13 @@ footer{max-width:1100px;margin:0 auto;padding:2.5rem 3rem;border-top:1px solid v
 
   /* HERO */
   .hero-wrap{background-position:60% center}
-  .hero{min-height:100svh;padding:90px 1.6rem 4rem;margin:0;width:100%;max-width:100%}
-  .hero-bio{font-size:0.9rem;max-width:100%;line-height:1.75}
+  .hero{min-height:100svh;padding:90px 1.6rem 2.5rem;margin:0;width:100%;max-width:100%;display:flex;flex-direction:column;justify-content:space-between}
+  .hero-text{text-align:center;align-items:center;display:flex;flex-direction:column;padding-top:2rem}
+  .hero-bio{font-size:0.9rem;max-width:100%;line-height:1.75;text-align:center}
+  .socials{justify-content:center;gap:0.5rem;margin-bottom:0}
   .hero-cta{font-size:0.65rem;padding:0.75rem 1.8rem}
-  .socials{gap:0.5rem}
   .social-link{font-size:0.68rem;padding:0.4rem 0.8rem}
+  .hero .socials{order:2;padding-bottom:1rem}
 
   /* SECTIONS */
   .section{padding:3rem 1.4rem}
