@@ -133,12 +133,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-co
 .book-author{font-size:0.75rem;color:var(--gray-mid)}
 
 .cali-grid{display:grid;grid-template-columns:repeat(3,minmax(0,320px));gap:1.2rem;justify-content:center}
-.cali-card{position:relative;border:1px solid var(--gray-light);border-radius:14px;padding:1.4rem 1.5rem;transition:border-color 0.2s,transform 0.2s;overflow:hidden;min-height:320px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center}
-.cali-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,33,55,0.85) 40%,rgba(13,33,55,0.2) 100%);border-radius:14px;z-index:0}
+.cali-card{position:relative;border:1px solid var(--gray-light);border-radius:14px;padding:1.4rem 1.5rem;transition:border-color 0.2s,transform 0.2s;overflow:hidden;min-height:320px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center top}
+.cali-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,33,55,0.92) 35%,rgba(13,33,55,0.15) 100%);border-radius:14px;z-index:0}
 .cali-card>*{position:relative;z-index:1}
 .cali-icon{font-size:1.4rem;margin-bottom:0.4rem}
-.cali-name{font-size:0.95rem;font-weight:500;margin-bottom:0.3rem;color:#fff}
-.cali-level{display:inline-block;font-size:0.68rem;letter-spacing:0.07em;text-transform:uppercase;color:#fff;background:rgba(42,127,168,0.75);padding:0.15rem 0.55rem;border-radius:2rem;margin-bottom:0.6rem}
+.cali-name{font-size:0.95rem;font-weight:500;margin-bottom:0.4rem;color:#fff;min-height:1.4em}
+.cali-level{display:inline-block;font-size:0.68rem;letter-spacing:0.07em;text-transform:uppercase;color:#fff;background:rgba(42,127,168,0.75);padding:0.25rem 0.9rem;border-radius:2rem;margin-bottom:0.6rem;width:auto;align-self:flex-start}
 .cali-desc{font-size:0.82rem;color:rgba(255,255,255,0.75);line-height:1.55}
 .cali-card:hover{border-color:var(--khaki);transform:translateY(-2px)}
 .cali-icon{font-size:1.6rem;margin-bottom:0.7rem}
@@ -147,9 +147,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-co
 .cali-desc{font-size:0.82rem;color:var(--gray-mid);line-height:1.55}
 
 .guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
-.guide-card{display:flex;align-items:flex-start;gap:1.2rem;background:var(--white);border:1px solid var(--gray-light);border-radius:14px;padding:1.4rem;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s}
+.guide-card{display:flex;align-items:flex-start;gap:1.2rem;background:var(--white);border:1px solid var(--gray-light);border-radius:14px;padding:2rem 1.6rem;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;min-height:130px}
 .guide-card:hover{border-color:var(--khaki);transform:translateY(-2px)}
-.guide-num{font-family:var(--serif);font-size:1.6rem;font-style:italic;color:var(--gray-light);line-height:1;flex-shrink:0}
+.guide-num{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;color:var(--gray-light);line-height:1;flex-shrink:0;padding-top:3px;letter-spacing:0.06em}
 .guide-tag{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--khaki);margin-bottom:0.3rem}
 .guide-title{font-size:0.92rem;font-weight:500;line-height:1.35;margin-bottom:0.3rem}
 .guide-desc{font-size:0.8rem;color:var(--gray-mid)}
@@ -413,7 +413,7 @@ footer{max-width:1100px;margin:0 auto;padding:2.5rem 3rem;border-top:1px solid v
   </div>
   <div class="guides-grid">
 
-    <a class="guide-card reveal reveal-delay-1" href="https://t.me/sthvproject" target="_blank">
+    <a class="guide-card reveal reveal-delay-1" href="guide-template.html">
       <div class="guide-num">01</div>
       <div>
         <div class="guide-tag">Видеосъёмка</div>
