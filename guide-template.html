@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гайд — STÓRCH</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%270.9em%27%20font-size%3D%2790%27%3E%F0%9F%8C%8A%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f0f4f8;
+  --text:#1a2e3d;
+  --muted:#6b8fa8;
+  --border:#b8d0e0;
+  --accent:#2a7fa8;
+  --white:#f8fbfd;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Jost',sans-serif;
+  --mono:'Unbounded',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);font-weight:300;font-size:16px;line-height:1.8}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:center;
+  height:58px;
+  background:rgba(240,244,248,0.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--mono);font-size:1rem;font-weight:700;
+  letter-spacing:0.18em;color:var(--text);text-decoration:none;
+  transition:opacity 0.2s;
+}
+.nav-logo:hover{opacity:0.6}
+.nav-back{
+  position:absolute;left:2rem;
+  font-family:var(--mono);font-size:0.58rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:0.4rem;
+  transition:color 0.2s;
+}
+.nav-back:hover{color:var(--accent)}
+.nav-back::before{content:'←';font-size:0.9rem}
+
+/* HERO */
+.guide-hero{
+  margin-top:58px;
+  position:relative;
+  width:100%;
+  height:55vh;
+  min-height:320px;
+  overflow:hidden;
+  background:#1a2e3d;
+}
+.guide-hero img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  opacity:0.55;
+  filter:grayscale(20%);
+}
+.guide-hero-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#0d1f2d 0%,#1a3347 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;opacity:0.3;
+}
+.guide-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,25,40,0.85) 0%,rgba(15,25,40,0.2) 60%,transparent 100%);
+}
+.guide-hero-tag{
+  position:absolute;top:2rem;left:2rem;
+  font-family:var(--mono);font-size:0.6rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(8px);
+  padding:0.3rem 0.8rem;border-radius:2rem;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+/* CONTENT */
+.guide-content{
+  max-width:720px;
+  margin:0 auto;
+  padding:4rem 2rem 6rem;
+}
+
+/* TITLE */
+.guide-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:500;
+  line-height:1.15;
+  letter-spacing:-0.02em;
+  margin-bottom:1.2rem;
+  animation:fadeUp 0.7s ease both;
+}
+.guide-title em{font-style:italic;color:var(--accent)}
+
+.guide-meta{
+  display:flex;align-items:center;gap:1.2rem;
+  margin-bottom:3rem;
+  padding-bottom:2rem;
+  border-bottom:1px solid var(--border);
+  animation:fadeUp 0.7s 0.1s ease both;
+}
+.guide-author{
+  font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--muted);
+}
+.guide-author strong{color:var(--text);font-weight:500}
+.guide-dot{width:3px;height:3px;border-radius:50%;background:var(--border)}
+.guide-date{font-size:0.75rem;color:var(--muted);letter-spacing:0.04em}
+
+/* INTRO */
+.guide-intro{
+  font-family:var(--serif);
+  font-size:1.15rem;
+  font-style:italic;
+  color:var(--muted);
+  line-height:1.75;
+  margin-bottom:2.5rem;
+  animation:fadeUp 0.7s 0.15s ease both;
+}
+
+/* BODY TEXT */
+.guide-body{animation:fadeUp 0.7s 0.2s ease both}
+.guide-body p{
+  font-size:1rem;color:var(--text);
+  line-height:1.85;margin-bottom:1.6rem;
+}
+.guide-body h2{
+  font-family:var(--serif);font-size:1.5rem;font-weight:500;
+  margin:3rem 0 1rem;letter-spacing:-0.01em;
+}
+.guide-body h3{
+  font-family:var(--mono);font-size:0.8rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--accent);margin:2.5rem 0 0.8rem;
+}
+
+/* PHOTO */
+.guide-photo{
+  margin:2.5rem 0;
+  border-radius:12px;
+  overflow:hidden;
+  animation:fadeUp 0.7s 0.25s ease both;
+}
+.guide-photo img{
+  width:100%;display:block;
+  object-fit:cover;
+  filter:grayscale(10%) contrast(1.02);
+}
+.guide-photo-caption{
+  margin-top:0.6rem;
+  font-size:0.75rem;color:var(--muted);
+  text-align:center;letter-spacing:0.04em;
+  font-style:italic;
+}
+
+/* STEPS */
+.guide-steps{
+  margin:2.5rem 0;
+  animation:fadeUp 0.7s 0.3s ease both;
+}
+.guide-steps-title{
+  font-family:var(--mono);font-size:0.75rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.5rem;
+}
+.step{
+  display:grid;grid-template-columns:40px 1fr;
+  gap:0 1.2rem;margin-bottom:1.8rem;
+  align-items:start;
+}
+.step-num{
+  font-family:var(--serif);font-size:1.8rem;font-style:italic;
+  color:var(--border);line-height:1;padding-top:2px;
+}
+.step-title{
+  font-size:0.95rem;font-weight:500;
+  margin-bottom:0.3rem;color:var(--text);
+}
+.step-desc{
+  font-size:0.88rem;color:var(--muted);line-height:1.65;
+}
+
+/* DIVIDER */
+.guide-divider{
+  display:flex;align-items:center;gap:1rem;
+  margin:3rem 0;
+  color:var(--border);
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;
+}
+.guide-divider::before,.guide-divider::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+
+/* FOOTER */
+.guide-footer{
+  margin-top:4rem;padding-top:2rem;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.guide-footer-logo{
+  font-family:var(--mono);font-size:0.75rem;font-weight:700;
+  letter-spacing:0.18em;color:var(--muted);text-decoration:none;
+}
+.guide-back-btn{
+  font-family:var(--mono);font-size:0.6rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--white);background:var(--text);
+  padding:0.6rem 1.4rem;border-radius:2rem;
+  text-decoration:none;transition:background 0.2s;
+}
+.guide-back-btn:hover{background:var(--accent)}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:600px){
+  .nav-back span{display:none}
+  .guide-content{padding:2.5rem 1.4rem 4rem}
+  .guide-hero{height:45vh}
+  .guide-hero-tag{top:1rem;left:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html"><span>На главную</span></a>
+  <a class="nav-logo" href="index.html">STÓRCH</a>
+</nav>
+
+<!-- HERO ФОТО — вставь src или удали img и оставь placeholder -->
+<div class="guide-hero">
+  <div class="guide-hero-placeholder">📖</div>
+  <!-- <img src="ФОТО_ГАЙДА.jpg" alt="Название гайда"> -->
+  <div class="guide-hero-overlay"></div>
+  <span class="guide-hero-tag">Видеосъёмка</span><!-- Измени тег -->
+</div>
+
+<div class="guide-content">
+
+  <!-- ЗАГОЛОВОК -->
+  <h1 class="guide-title">Как снимать на телефон —<br><em>базовый гайд</em></h1>
+
+  <div class="guide-meta">
+    <span class="guide-author">Автор: <strong>Alexey Storcheusov</strong></span>
+    <div class="guide-dot"></div>
+    <span class="guide-date">2025</span>
+  </div>
+
+  <!-- ВВОДНАЯ ФРАЗА -->
+  <p class="guide-intro">
+    Хорошее видео — это не дорогая камера. Это понимание света, кадра и момента. Здесь — минимум теории и максимум практики.
+  </p>
+
+  <div class="guide-body">
+
+    <p>
+      Большинство людей думают, что для красивого видео нужна дорогая техника. На самом деле iPhone или любой флагманский Android снимает лучше, чем профессиональные камеры десятилетней давности. Вопрос в том, как им пользоваться.
+    </p>
+
+    <!-- ФОТО ВНУТРИ ТЕКСТА -->
+    <div class="guide-photo">
+      <img src="ФОТО.jpg" alt="Описание"><!-- Замени src -->
+      <p class="guide-photo-caption">Подпись к фото — необязательно</p>
+    </div>
+
+    <p>
+      Добавь сюда свой текст. Расскажи историю, поделись опытом. Пиши так, как говоришь — читатель это чувствует.
+    </p>
+
+  </div>
+
+  <div class="guide-divider">ШАГИ</div>
+
+  <!-- СПИСОК ШАГОВ -->
+  <div class="guide-steps">
+    <p class="guide-steps-title">С чего начать</p>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Разберись со светом</div>
+        <div class="step-desc">Снимай лицом к источнику света. Окно, уличный фонарь, закат — всё работает. Главное — свет должен падать на объект, а не сзади.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Зафиксируй телефон</div>
+        <div class="step-desc">Трясущееся видео — главная ошибка новичков. Штатив за 500 рублей решает проблему. Или просто прислони локти к телу.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Снимай в 4K 24fps</div>
+        <div class="step-desc">24 кадра в секунду дают кинематографичный вид. 4K оставляет место для кадрирования при монтаже.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">Думай о звуке</div>
+        <div class="step-desc">Плохой звук убивает хорошее видео быстрее, чем плохая картинка. Петличный микрофон за 1500 рублей — лучшая инвестиция.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="guide-footer">
+    <a class="guide-footer-logo" href="index.html">STÓRCH</a>
+    <a class="guide-back-btn" href="index.html">← На главную</a>
+  </div>
+
+</div>
+
+</body>
+</html>
