@@ -151,15 +151,29 @@ a.book-card:hover .book-cover{opacity:0.85;transition:opacity 0.2s}
 .cali-desc{font-size:0.82rem;color:var(--gray-mid);line-height:1.55}
 
 .guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
-.guide-card{display:flex;align-items:flex-start;gap:1.2rem;background:var(--white);border:1px solid var(--gray-light);border-radius:14px;padding:2rem 1.6rem;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;min-height:130px}
-.guide-card:hover{border-color:var(--khaki);transform:translateY(-2px)}
-.guide-num{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;color:var(--gray-light);line-height:1;flex-shrink:0;padding-top:3px;letter-spacing:0.06em}
-.guide-tag{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--khaki);margin-bottom:0.3rem}
-.guide-title{font-size:0.92rem;font-weight:500;line-height:1.35;margin-bottom:0.3rem}
-.guide-desc{font-size:0.8rem;color:var(--gray-mid)}
-.guide-arrow{margin-left:auto;color:var(--gray-light);font-size:1.1rem;align-self:center}
+.guide-card{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  border-radius:14px;padding:2rem 1.6rem;
+  text-decoration:none;color:inherit;
+  transition:transform 0.2s,box-shadow 0.2s;
+  min-height:130px;position:relative;overflow:hidden;
+  border:1px solid rgba(122,184,212,0.15);
+  background:#0d1f2d;
+}
+.guide-card::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cline x1='50' y1='42' x2='50' y2='58' stroke='rgba(122,184,212,0.1)' stroke-width='1'/%3E%3Cline x1='42' y1='50' x2='58' y2='50' stroke='rgba(122,184,212,0.1)' stroke-width='1'/%3E%3Cline x1='44.5' y1='44.5' x2='55.5' y2='55.5' stroke='rgba(122,184,212,0.06)' stroke-width='1'/%3E%3Cline x1='55.5' y1='44.5' x2='44.5' y2='55.5' stroke='rgba(122,184,212,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.guide-card>*{position:relative;z-index:1}
+.guide-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(13,31,45,0.4);border-color:rgba(122,184,212,0.3)}
+.guide-num{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;color:rgba(122,184,212,0.4);line-height:1;flex-shrink:0;padding-top:3px;letter-spacing:0.06em}
+.guide-tag{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:#7ab8d4;margin-bottom:0.3rem}
+.guide-title{font-size:0.92rem;font-weight:500;line-height:1.35;margin-bottom:0.3rem;color:#f0f4f8}
+.guide-desc{font-size:0.8rem;color:rgba(255,255,255,0.4)}
+.guide-arrow{margin-left:auto;color:rgba(122,184,212,0.4);font-size:1.1rem;align-self:center}
 
-.donate-wrap{background:var(--cream-dark);border-radius:16px;padding:4rem 3rem;text-align:center;border:1px solid var(--gray-light);position:relative}
+.donate-wrap{background:var(--cream-dark);border-radius:16px;padding:5rem 3rem 4rem;text-align:center;border:1px solid var(--gray-light);position:relative}
 .donate-title{font-family:'Unbounded',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:0.04em;margin-bottom:0.8rem;line-height:1.3}
 .donate-title em{font-style:normal;font-weight:400;color:var(--khaki)}
 .donate-desc{font-size:0.9rem;color:var(--gray-mid);max-width:480px;margin:0 auto 2rem}
@@ -172,7 +186,7 @@ a.book-card:hover .book-cover{opacity:0.85;transition:opacity 0.2s}
 
 .donate-note{margin-top:1.2rem;font-size:0.78rem;color:var(--gray-light)}
 .donate-soon{
-  position:absolute;top:1.2rem;right:1.2rem;
+  position:absolute;top:1.4rem;right:1.4rem;
   display:inline-flex;align-items:center;
   font-family:'Unbounded',sans-serif;font-size:0.55rem;font-weight:700;
   letter-spacing:0.12em;text-transform:uppercase;
@@ -206,6 +220,47 @@ footer{max-width:1100px;margin:0 auto;padding:2.5rem 3rem;border-top:1px solid v
 .quote-block{padding:3.5rem 3rem 0;max-width:680px;margin:0 auto;text-align:center}
 .quote-text{font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-style:italic;font-weight:400;color:var(--gray-mid);line-height:1.7;letter-spacing:0.01em}
 .quote-source{margin-top:0.6rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-light)}
+
+/* VIDEO POSTER */
+.video-poster{position:absolute;inset:0;overflow:hidden;border-radius:16px}
+.video-poster-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#0d1f2d 0%,#1a3347 40%,#0d2137 100%);
+}
+.video-poster-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cline x1='65' y1='55' x2='65' y2='75' stroke='rgba(122,184,212,0.12)' stroke-width='1'/%3E%3Cline x1='55' y1='65' x2='75' y2='65' stroke='rgba(122,184,212,0.12)' stroke-width='1'/%3E%3Cline x1='57.5' y1='57.5' x2='72.5' y2='72.5' stroke='rgba(122,184,212,0.07)' stroke-width='1'/%3E%3Cline x1='72.5' y1='57.5' x2='57.5' y2='72.5' stroke='rgba(122,184,212,0.07)' stroke-width='1'/%3E%3C/svg%3E");
+}
+.video-poster-content{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.2rem;z-index:1;
+}
+.video-poster-soon{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:'Unbounded',sans-serif;font-size:0.6rem;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+  border:1px solid rgba(122,184,212,0.3);
+  padding:0.35rem 0.9rem;border-radius:2rem;
+  background:rgba(122,184,212,0.08);
+  animation:badgeBlink 2s ease-in-out infinite;
+}
+.video-poster-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:#7ab8d4;flex-shrink:0;
+}
+.video-poster-logo{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(2rem,6vw,4rem);
+  font-weight:700;letter-spacing:0.18em;
+  color:#fff;opacity:0.9;
+  text-shadow:0 0 60px rgba(122,184,212,0.3);
+}
+.video-poster-sub{
+  font-family:'Jost',sans-serif;font-size:0.82rem;font-weight:300;
+  letter-spacing:0.08em;color:rgba(255,255,255,0.4);
+}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
@@ -328,11 +383,16 @@ footer{max-width:1100px;margin:0 auto;padding:2.5rem 3rem;border-top:1px solid v
     <span class="section-sub"><a href="https://www.youtube.com/@the.storcheusov" target="_blank">Все видео →</a></span>
   </div>
   <div class="video-wrap reveal reveal-delay-1">
-    <div class="video-placeholder">
-      <div class="play-btn">
-        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    <div class="video-poster">
+      <div class="video-poster-bg"></div>
+      <div class="video-poster-content">
+        <span class="video-poster-soon">
+          <span class="video-poster-dot"></span>
+          Скоро
+        </span>
+        <div class="video-poster-logo">STÓRCH</div>
+        <p class="video-poster-sub">Первый выпуск уже в работе</p>
       </div>
-      <p>Видео появится когда выйдет первый выпуск</p>
     </div>
     <!--
     Когда появится видео — удали div.video-placeholder выше и раскомментируй iframe:
