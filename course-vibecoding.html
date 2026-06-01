@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вайбкодинг с 0 — STÓRCH</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%270.9em%27%20font-size%3D%2790%27%3E%F0%9F%8C%8A%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f0f4f8;
+  --cream-dark:#e2eaf2;
+  --text:#1a2e3d;
+  --muted:#6b8fa8;
+  --border:#b8d0e0;
+  --accent:#2a7fa8;
+  --white:#f8fbfd;
+  --dark:#0d1f2d;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Jost',sans-serif;
+  --mono:'Unbounded',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);font-weight:300;font-size:15px;line-height:1.75}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:center;
+  height:58px;
+  background:rgba(240,244,248,0.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:var(--mono);font-size:1rem;font-weight:700;letter-spacing:0.18em;color:var(--text);text-decoration:none;transition:opacity 0.2s}
+.nav-logo:hover{opacity:0.6}
+.nav-back{position:absolute;left:2rem;font-family:var(--mono);font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+.nav-back:hover{color:var(--accent)}
+.nav-back::before{content:'←';font-size:0.9rem}
+
+/* HERO */
+.course-hero{
+  margin-top:58px;
+  background:var(--dark);
+  padding:4rem 2rem 3rem;
+  position:relative;overflow:hidden;
+}
+.course-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cline x1='65' y1='55' x2='65' y2='75' stroke='rgba(122,184,212,0.1)' stroke-width='1'/%3E%3Cline x1='55' y1='65' x2='75' y2='65' stroke='rgba(122,184,212,0.1)' stroke-width='1'/%3E%3Cline x1='57.5' y1='57.5' x2='72.5' y2='72.5' stroke='rgba(122,184,212,0.06)' stroke-width='1'/%3E%3Cline x1='72.5' y1='57.5' x2='57.5' y2='72.5' stroke='rgba(122,184,212,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.course-hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.course-tag{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:var(--mono);font-size:0.58rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(122,184,212,0.8);
+  border:1px solid rgba(122,184,212,0.25);
+  padding:0.3rem 0.8rem;border-radius:2rem;
+  background:rgba(122,184,212,0.08);
+  margin-bottom:1.5rem;
+}
+.course-title{
+  font-family:var(--mono);font-size:clamp(1.6rem,4vw,2.8rem);font-weight:700;
+  letter-spacing:0.04em;color:#fff;
+  margin-bottom:1rem;line-height:1.2;
+}
+.course-title em{font-style:normal;font-weight:400;color:rgba(122,184,212,0.7)}
+.course-desc{font-size:0.95rem;color:rgba(255,255,255,0.5);max-width:520px;line-height:1.75;margin-bottom:2rem}
+.course-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.course-meta-item{text-align:center}
+.course-meta-num{font-family:var(--mono);font-size:1.4rem;font-weight:700;color:#fff;display:block}
+.course-meta-label{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+
+/* CONTENT */
+.course-content{max-width:860px;margin:0 auto;padding:3rem 2rem 5rem}
+
+.modules-title{
+  font-family:var(--mono);font-size:0.7rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.5rem;
+}
+
+/* MODULE */
+.module{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-bottom:1rem;
+  overflow:hidden;
+}
+.module-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 1.6rem;cursor:pointer;
+  user-select:none;
+}
+.module-head:hover{background:rgba(42,127,168,0.03)}
+.module-left{display:flex;align-items:flex-start;gap:1rem}
+.module-num{
+  font-family:var(--mono);font-size:0.65rem;font-weight:700;
+  letter-spacing:0.1em;color:var(--muted);
+  background:var(--cream);padding:0.25rem 0.6rem;
+  border-radius:2rem;border:1px solid var(--border);
+  flex-shrink:0;margin-top:2px;
+}
+.module-name{font-size:0.95rem;font-weight:500;margin-bottom:0.2rem}
+.module-sub{font-size:0.8rem;color:var(--muted)}
+.module-toggle{
+  font-size:1rem;color:var(--muted);
+  transition:transform 0.25s;flex-shrink:0;
+}
+.module.open .module-toggle{transform:rotate(180deg)}
+
+/* LESSONS */
+.module-lessons{display:none;border-top:1px solid var(--border)}
+.module.open .module-lessons{display:block}
+.lesson{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.85rem 1.6rem;
+  border-bottom:1px solid var(--border);
+  font-size:0.85rem;
+}
+.lesson:last-child{border-bottom:none}
+.lesson-left{display:flex;align-items:center;gap:0.8rem}
+.lesson-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--border);flex-shrink:0;
+}
+.lesson-name{color:var(--text)}
+.lesson-type{font-size:0.72rem;color:var(--muted)}
+.lesson-duration{font-size:0.75rem;color:var(--muted);letter-spacing:0.04em;flex-shrink:0}
+
+/* COMING SOON MODULE */
+.module-soon .module-name{color:var(--muted)}
+.module-soon .module-num{opacity:0.5}
+.soon-badge{
+  font-family:var(--mono);font-size:0.55rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--accent);background:rgba(42,127,168,0.08);
+  padding:0.2rem 0.6rem;border-radius:2rem;
+  border:1px solid rgba(42,127,168,0.2);
+}
+
+/* FOOTER */
+.course-footer{
+  max-width:860px;margin:0 auto;
+  padding:2rem 2rem 3rem;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.course-footer-logo{font-family:var(--mono);font-size:0.75rem;font-weight:700;letter-spacing:0.18em;color:var(--muted);text-decoration:none}
+.back-btn{font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);background:var(--text);padding:0.6rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background 0.2s}
+.back-btn:hover{background:var(--accent)}
+
+@media(max-width:600px){
+  .nav-back span{display:none}
+  .course-hero{padding:3rem 1.4rem 2.5rem}
+  .course-content{padding:2rem 1.4rem 4rem}
+  .module-head{padding:1.1rem 1.2rem}
+  .lesson{padding:0.75rem 1.2rem}
+  .course-meta{gap:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html"><span>На главную</span></a>
+  <a class="nav-logo" href="index.html">STÓRCH</a>
+</nav>
+
+<div class="course-hero">
+  <div class="course-hero-inner">
+    <div class="course-tag">Курс · Вайбкодинг</div>
+    <h1 class="course-title">Вайбкодинг <em>с нуля</em></h1>
+    <p class="course-desc">Как без знания кода собирать сайты, инструменты и цифровые продукты с помощью ИИ — быстро, без боли и лишней теории.</p>
+    <div class="course-meta">
+      <div class="course-meta-item">
+        <span class="course-meta-num">4</span>
+        <span class="course-meta-label">Модуля</span>
+      </div>
+      <div class="course-meta-item">
+        <span class="course-meta-num">~5ч</span>
+        <span class="course-meta-label">Время</span>
+      </div>
+      <div class="course-meta-item">
+        <span class="course-meta-num">0</span>
+        <span class="course-meta-label">Знания кода</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="course-content">
+  <p class="modules-title">Содержание курса</p>
+
+  <!-- MODULE 1 -->
+  <div class="module open" onclick="toggleModule(this)">
+    <div class="module-head">
+      <div class="module-left">
+        <span class="module-num">01</span>
+        <div>
+          <div class="module-name">Что такое вайбкодинг</div>
+          <div class="module-sub">Основы — без страха и без воды</div>
+        </div>
+      </div>
+      <span class="module-toggle">↓</span>
+    </div>
+    <div class="module-lessons">
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Вводный урок</div>
+            <div class="lesson-type">Теория</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~10 мин</span>
+      </div>
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Что реально можно собрать прямо сейчас</div>
+            <div class="lesson-type">Теория</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~10 мин</span>
+      </div>
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Инструменты: что выбрать</div>
+            <div class="lesson-type">Практика</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~15 мин</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module" onclick="toggleModule(this)">
+    <div class="module-head">
+      <div class="module-left">
+        <span class="module-num">02</span>
+        <div>
+          <div class="module-name">Как говорить с ИИ</div>
+          <div class="module-sub">Формулируешь точно — получаешь точно</div>
+        </div>
+      </div>
+      <span class="module-toggle">↓</span>
+    </div>
+    <div class="module-lessons">
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Анатомия хорошего промпта</div>
+            <div class="lesson-type">Теория</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~10 мин</span>
+      </div>
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Типичные ошибки и как их избежать</div>
+            <div class="lesson-type">Практика</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~20 мин</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module" onclick="toggleModule(this)">
+    <div class="module-head">
+      <div class="module-left">
+        <span class="module-num">03</span>
+        <div>
+          <div class="module-name">Первый проект за вечер</div>
+          <div class="module-sub">Настоящий. С нуля. Рабочий.</div>
+        </div>
+      </div>
+      <span class="module-toggle">↓</span>
+    </div>
+    <div class="module-lessons">
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Выбираем идею и ставим задачу</div>
+            <div class="lesson-type">Практика</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~15 мин</span>
+      </div>
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Собираем вместе с ИИ</div>
+            <div class="lesson-type">Практика</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~30 мин</span>
+      </div>
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Правим и доводим до ума</div>
+            <div class="lesson-type">Практика</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~15 мин</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="module" onclick="toggleModule(this)">
+    <div class="module-head">
+      <div class="module-left">
+        <span class="module-num">04</span>
+        <div>
+          <div class="module-name">Выкладываем в интернет</div>
+          <div class="module-sub">Домен, хостинг, запуск по шагам</div>
+        </div>
+      </div>
+      <span class="module-toggle">↓</span>
+    </div>
+    <div class="module-lessons">
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">GitHub Pages — бесплатный хостинг</div>
+            <div class="lesson-type">Практика</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~20 мин</span>
+      </div>
+      <div class="lesson">
+        <div class="lesson-left">
+          <div class="lesson-dot"></div>
+          <div>
+            <div class="lesson-name">Свой домен — шаги</div>
+            <div class="lesson-type">Практика</div>
+          </div>
+        </div>
+        <span class="lesson-duration">~15 мин</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODULE 5 — SOON -->
+  <div class="module module-soon">
+    <div class="module-head">
+      <div class="module-left">
+        <span class="module-num">05</span>
+        <div>
+          <div class="module-name">Следующий уровень</div>
+          <div class="module-sub">Больше инструментов, больше возможностей</div>
+        </div>
+      </div>
+      <span class="soon-badge">Скоро</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="course-footer">
+  <a class="course-footer-logo" href="index.html">STÓRCH</a>
+  <a class="back-btn" href="index.html">← На главную</a>
+</div>
+
+<script>
+function toggleModule(el) {
+  if (el.classList.contains('module-soon')) return;
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
