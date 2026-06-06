@@ -52,6 +52,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .module-lessons{display:none;border-top:1px solid var(--border)}
 .module.open .module-lessons{display:block}
 
+.lesson-link{text-decoration:none;color:inherit;background:rgba(42,127,168,0.04)}
+.lesson-link:hover{background:rgba(42,127,168,0.08)}
 .lesson{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1.6rem;border-bottom:1px solid var(--border);font-size:0.85rem;gap:1rem}
 .lesson:last-child{border-bottom:none}
 .lesson-left{display:flex;align-items:center;gap:0.9rem;min-width:0}
@@ -128,7 +130,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
         <span class="module-toggle">↓</span>
       </div>
       <div class="module-lessons">
-        <div class="lesson"><div class="lesson-left"><span class="lesson-num">1</span><div class="lesson-info"><div class="lesson-name">Вводный урок</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></div>
+        <a class="lesson lesson-link" href="lesson-1-intro.html"><div class="lesson-left"><span class="lesson-num">1</span><div class="lesson-info"><div class="lesson-name">Вводный урок</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></a>
         <div class="lesson"><div class="lesson-left"><span class="lesson-num">2</span><div class="lesson-info"><div class="lesson-name">Что такое вайбкодинг (по-человечески)</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></div>
         <div class="lesson"><div class="lesson-left"><span class="lesson-num">3</span><div class="lesson-info"><div class="lesson-name">Что реально можно собрать прямо сейчас</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></div>
         <div class="lesson"><div class="lesson-left"><span class="lesson-num">4</span><div class="lesson-info"><div class="lesson-name">Зачем это тебе: жизнь, работа, деньги</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></div>
