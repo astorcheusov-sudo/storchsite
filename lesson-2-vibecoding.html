@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Что такое вайбкодинг — STÓRCH</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%270.9em%27%20font-size%3D%2790%27%3E%F0%9F%8C%8A%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f0f4f8;--text:#1a2e3d;--muted:#6b8fa8;
+  --border:#b8d0e0;--accent:#2a7fa8;--white:#f8fbfd;
+  --sans:'Jost',sans-serif;--mono:'Unbounded',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);font-weight:300;font-size:16px;line-height:1.8}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 2rem;background:rgba(240,244,248,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.18em;color:var(--text);text-decoration:none}
+.nav-logo:hover{opacity:0.6}
+.nav-course{font-family:var(--mono);font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-course:hover{color:var(--accent)}
+
+.breadcrumb{max-width:760px;margin:0 auto;padding:1.2rem 2rem 0;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;font-size:0.78rem;color:var(--muted)}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{color:var(--border)}
+.breadcrumb strong{color:var(--text);font-weight:500}
+
+.lesson-progress{max-width:760px;margin:1rem auto 0;padding:0 2rem}
+.progress-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.5rem}
+.progress-meta{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem}
+.progress-module{font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)}
+.progress-dot{color:var(--border)}
+.progress-module-name{font-size:0.82rem;color:var(--muted)}
+.progress-title{font-size:1rem;font-weight:500;margin-bottom:0.7rem}
+.progress-bar-wrap{display:flex;align-items:center;gap:0.8rem}
+.progress-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:3px;width:6.4%}
+.progress-pct{font-family:var(--mono);font-size:0.6rem;font-weight:700;color:var(--muted);white-space:nowrap}
+
+.lesson-wrap{max-width:760px;margin:0 auto;padding:2rem 2rem 7rem}
+.lesson-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.lesson-badge{font-family:var(--mono);font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:rgba(42,127,168,0.08);border:1px solid rgba(42,127,168,0.2);padding:0.25rem 0.7rem;border-radius:2rem}
+.lesson-duration{font-size:0.78rem;color:var(--muted)}
+.lesson-title{font-family:var(--mono);font-size:1.5rem;font-weight:700;letter-spacing:0.02em;margin-bottom:2rem;line-height:1.25}
+
+.lesson-body{font-size:1rem;line-height:1.85;color:var(--text)}
+.lesson-body h2{font-family:var(--mono);font-size:0.95rem;font-weight:700;letter-spacing:0.03em;margin:2.5rem 0 1rem;color:var(--text)}
+.lesson-body p{margin-bottom:1.1rem}
+.lesson-body strong{font-weight:500}
+
+/* Highlighted blocks */
+.hl-gray{background:#f0f0f0;border-left:3px solid #ccc;padding:0.7rem 1rem;border-radius:0 8px 8px 0;margin:0.8rem 0}
+.hl-pink{background:rgba(255,80,80,0.07);border-left:3px solid rgba(255,80,80,0.3);padding:0.7rem 1rem;border-radius:0 8px 8px 0;margin:0.8rem 0}
+.hl-orange{background:rgba(230,150,30,0.08);border-left:3px solid rgba(230,150,30,0.35);padding:0.7rem 1rem;border-radius:0 8px 8px 0;margin:1.2rem 0;color:var(--muted)}
+
+/* Code block */
+.code-block{background:#f5f5f5;border:1px solid #e0e0e0;border-radius:10px;padding:1.2rem 1.4rem;margin:1.2rem 0;font-family:'Courier New',monospace;font-size:0.88rem;line-height:1.7;color:#333}
+.code-block .code-label{font-weight:700;color:var(--text)}
+
+/* Table */
+.lesson-table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:0.9rem}
+.lesson-table th,.lesson-table td{padding:0.7rem 1rem;border:1px solid var(--border);text-align:left}
+.lesson-table th{background:var(--cream);font-weight:500;font-size:0.82rem}
+.lesson-table tr:nth-child(even) td{background:rgba(240,244,248,0.5)}
+
+/* Bottom actions */
+.lesson-actions{position:fixed;bottom:0;left:0;right:0;padding:1rem 2rem;background:rgba(240,244,248,0.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);display:flex;flex-direction:column;gap:0.8rem;z-index:40}
+.btn-done{width:100%;display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.85rem;background:rgba(42,200,120,0.08);border:1.5px solid rgba(42,200,120,0.3);border-radius:10px;font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1a8a50;cursor:pointer;transition:all 0.2s}
+.btn-done:hover{background:rgba(42,200,120,0.15)}
+.lesson-nav{display:flex;gap:0.8rem}
+.btn-prev{flex:1;display:flex;align-items:center;gap:0.7rem;padding:0.75rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:border-color 0.2s}
+.btn-prev:hover{border-color:var(--accent)}
+.btn-prev-icon{font-size:1rem;color:var(--muted)}
+.btn-prev-info{display:flex;flex-direction:column}
+.btn-prev-label{font-size:0.62rem;color:var(--muted);font-family:var(--mono);font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.btn-prev-title{font-size:0.82rem;font-weight:500}
+.btn-next{flex:2;display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;background:var(--accent);border-radius:10px;text-decoration:none;color:#fff;transition:background 0.2s}
+.btn-next:hover{background:#1a6080}
+.btn-next-info{display:flex;flex-direction:column}
+.btn-next-label{font-size:0.62rem;color:rgba(255,255,255,0.6);font-family:var(--mono);font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.btn-next-title{font-size:0.82rem;font-weight:500}
+
+@media(max-width:600px){
+  .lesson-wrap{padding:1.5rem 1.2rem 9rem}
+  .breadcrumb,.lesson-progress{padding-left:1.2rem;padding-right:1.2rem}
+  .lesson-actions{padding:0.8rem 1.2rem}
+  .lesson-title{font-size:1.15rem}
+  .lesson-table{font-size:0.8rem}
+  .lesson-table th,.lesson-table td{padding:0.5rem 0.7rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">STÓRCH</a>
+  <a class="nav-course" href="course-vibecoding.html">← Программа курса</a>
+</nav>
+
+<div style="padding-top:58px">
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a>
+    <span>/</span>
+    <a href="course-vibecoding.html">Вайбкодинг с 0</a>
+    <span>/</span>
+    <strong>Что такое вайбкодинг (по-человечески)</strong>
+  </div>
+
+  <div class="lesson-progress">
+    <div class="progress-card">
+      <div class="progress-meta">
+        <span class="progress-module">Модуль 1</span>
+        <span class="progress-dot">·</span>
+        <span class="progress-module-name">Вайбкодинг без страха</span>
+      </div>
+      <div class="progress-title">Урок 2 из 31</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <span class="progress-pct">6%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-wrap">
+    <div class="lesson-meta">
+      <span class="lesson-badge">Теория</span>
+      <span class="lesson-duration">⏱ 10 мин</span>
+    </div>
+    <h1 class="lesson-title">2. Что такое вайбкодинг (по-человечески)</h1>
+
+    <div class="lesson-body">
+
+      <p>Представь, что тебе нужен сайт. Или маленькое приложение.<br>Или форма для заявок. Раньше у тебя было два пути:</p>
+
+      <div class="hl-gray"><strong>Путь 1</strong> — нанять разработчика. Долго, дорого, не всегда понятно, что получишь.</div>
+      <div class="hl-gray"><strong>Путь 2</strong> — научиться программировать самому. Ещё дольше. И, будем честны, — не для всех.</div>
+      <div class="hl-pink">Теперь есть <strong>третий путь</strong>. И он меняет правила.</div>
+
+      <h2>Третий путь — вайбкодинг</h2>
+
+      <p><strong>Вайбкодинг</strong> — это когда ты <strong>описываешь словами</strong>, что хочешь получить, а <strong>AI-инструмент собирает это за тебя</strong>. Ты говоришь — он делает.</p>
+
+      <p>Не ты пишешь код. Не ты разбираешься в технологиях. Ты формулируешь задачу — AI превращает её в работающий продукт.</p>
+
+      <div class="hl-orange">Вот буквально как это выглядит:</div>
+
+      <div class="code-block">
+        <p><span class="code-label">Ты:</span> «Сделай мне страницу-визитку для фотографа. Минималистичный дизайн, тёмный фон, галерея работ, кнопка для связи в Telegram.»</p>
+        <br>
+        <p><span class="code-label">AI:</span> Собирает страницу. С дизайном, кнопками и галереей. За минуты.</p>
+      </div>
+
+      <p>Это не фантазия. Это уже работает. Прямо сейчас.</p>
+
+      <h2>Почему это называется «вайбкодинг»</h2>
+
+      <p>Термин придумал Андрей Карпати — один из ключевых людей в мире AI. Он описал идею так: ты не пишешь код в привычном смысле, ты задаёшь направление, «вайб» — а AI пишет код за тебя.</p>
+
+      <p>«Вайб» — потому что ты работаешь не с синтаксисом и командами, а с ощущением результата. Ты объясняешь, что хочешь увидеть, — и получаешь это.</p>
+
+      <h2>Чем это отличается от обычного программирования:</h2>
+
+      <table class="lesson-table">
+        <thead>
+          <tr><th></th><th>Программирование</th><th>Вайбкодинг</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Что делаешь</strong></td><td>Пишешь код вручную</td><td>Описываешь словами</td></tr>
+          <tr><td><strong>Что нужно знать</strong></td><td>Нужно знать язык</td><td>Нужно уметь объяснять</td></tr>
+          <tr><td><strong>Сколько учиться</strong></td><td>Учишься месяцами</td><td>Начинаешь за вечер</td></tr>
+          <tr><td><strong>Кто может</strong></td><td>Исправляешь баги сам</td><td>AI исправляет по запросу</td></tr>
+          <tr><td><strong>Стоимость</strong></td><td>Дорого/долго нанимать</td><td>Делаешь сам, платишь только за подписку на ИИ</td></tr>
+        </tbody>
+      </table>
+
+      <p>Обрати внимание: в правом столбце нигде нет слова «код». Потому что вайбкодинг — это не про код. Это про <strong>умение внятно объяснить AI, что тебе нужно</strong>.</p>
+
+      <h2>А что, AI правда может собрать нормальный сайт?</h2>
+
+      <p>Да. И не только сайт.</p>
+
+      <p>Современные AI-инструменты умеют генерировать работающий код по текстовому описанию. Ты описываешь — они создают. Ты уточняешь — они дорабатывают. Это похоже на работу с очень быстрым и терпеливым ассистентом, который знает все языки программирования, но ждёт от тебя внятную задачу.</p>
+
+      <p>Ключевое слово — <strong>нормальную задачу</strong>.</p>
+
+      <p>Потому что, как говорится: «что на входе, то и на выходе»</p>
+
+      <p>Именно поэтому один из следующих модулей курса посвящён тому, как правильно общаться с AI. Но об этом чуть позже.</p>
+
+      <h2>Итого:</h2>
+
+      <p><strong>Вайбкодинг</strong> — это навык создавать digital-продукты через диалог с AI.</p>
+
+      <p>Ты говоришь, что хочешь. AI это делает. Ты уточняешь. AI улучшает. И так — шаг за шагом — появляется результат. Без единой строчки кода, написанной вручную.</p>
+
+      <p>Звучит просто? Так и есть. Суть — простая. Нюансы — освоишь по ходу.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="lesson-actions">
+  <button class="btn-done" onclick="this.textContent='✓ Урок пройден';this.style.background='rgba(42,200,120,0.15)'">✓ Урок пройден</button>
+  <div class="lesson-nav">
+    <a class="btn-prev" href="lesson-1-intro.html">
+      <span class="btn-prev-icon">‹</span>
+      <div class="btn-prev-info">
+        <span class="btn-prev-label">Назад</span>
+        <span class="btn-prev-title">Вводный урок</span>
+      </div>
+    </a>
+    <a class="btn-next" href="#">
+      <div class="btn-next-info">
+        <span class="btn-next-label">Далее</span>
+        <span class="btn-next-title">Что реально можно собрать прямо сейчас</span>
+      </div>
+      <span style="font-size:1.1rem">›</span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
