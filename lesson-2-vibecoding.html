@@ -204,7 +204,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 </div>
 
 <div class="lesson-actions">
-  <button class="btn-done" onclick="this.textContent='✓ Урок пройден';this.style.background='rgba(42,200,120,0.15)'">✓ Урок пройден</button>
+  <button class="btn-done" >✓ Урок пройден</button>
   <div class="lesson-nav">
     <a class="btn-prev" href="lesson-1-intro.html">
       <span class="btn-prev-icon">‹</span>
@@ -213,7 +213,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
         <span class="btn-prev-title">Вводный урок</span>
       </div>
     </a>
-    <a class="btn-next" href="lesson-3-what-to-build.html">
+    <a class="btn-next" href="lesson-3-what-to-build.html" onclick="event.preventDefault();goNext()">
       <div class="btn-next-info">
         <span class="btn-next-label">Далее</span>
         <span class="btn-next-title">Что реально можно собрать прямо сейчас</span>
@@ -223,5 +223,41 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
   </div>
 </div>
 
+
+<script>
+const LESSON_ID = 'lesson-2';
+const NEXT_URL = 'lesson-3-what-to-build.html';
+const TOTAL = 31;
+
+// Check if already done on load
+window.addEventListener('DOMContentLoaded', () => {
+  const done = JSON.parse(localStorage.getItem('storch_progress') || '[]');
+  if (done.includes(LESSON_ID)) {
+    markDoneUI();
+  }
+});
+
+function markDoneUI() {
+  const btn = document.querySelector('.btn-done');
+  if (btn) {
+    btn.textContent = '✓ Урок пройден';
+    btn.style.background = 'rgba(42,200,120,0.15)';
+    btn.style.borderColor = 'rgba(42,200,120,0.5)';
+    btn.style.cursor = 'default';
+    btn.onclick = null;
+  }
+}
+
+function goNext() {
+  // Mark lesson as done
+  const done = JSON.parse(localStorage.getItem('storch_progress') || '[]');
+  if (!done.includes(LESSON_ID)) {
+    done.push(LESSON_ID);
+    localStorage.setItem('storch_progress', JSON.stringify(done));
+  }
+  markDoneUI();
+  if (NEXT_URL) window.location.href = NEXT_URL;
+}
+</script>
 </body>
 </html>

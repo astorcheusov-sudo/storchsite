@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Что реально можно собрать — STÓRCH</title>
+<title>Как устроен курс — STÓRCH</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20y%3D%270.9em%27%20font-size%3D%2790%27%3E%F0%9F%8C%8A%3C%2Ftext%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .progress-title{font-size:1rem;font-weight:500;margin-bottom:0.7rem}
 .progress-bar-wrap{display:flex;align-items:center;gap:0.8rem}
 .progress-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:var(--accent);border-radius:3px;width:9.6%}
+.progress-fill{height:100%;background:var(--accent);border-radius:3px;width:16.1%}
 .progress-pct{font-family:var(--mono);font-size:0.6rem;font-weight:700;color:var(--muted);white-space:nowrap}
 
 .lesson-wrap{max-width:760px;margin:0 auto;padding:2rem 2rem 9rem}
@@ -53,8 +53,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .lesson-body ul{margin:0 0 1.2rem 1.5rem}
 .lesson-body ul li{margin-bottom:0.45rem}
 .lesson-body strong{font-weight:500}
-.hl-pink{background:rgba(255,80,80,0.07);border-left:3px solid rgba(255,80,80,0.3);padding:0.7rem 1rem;border-radius:0 8px 8px 0;margin:0.8rem 0}
-.hl-orange{background:rgba(230,150,30,0.08);border-left:3px solid rgba(230,150,30,0.35);padding:0.7rem 1rem;border-radius:0 8px 8px 0;margin:0.8rem 0}
+
+.mod{margin-bottom:1rem;padding:0.2rem 0}
+.mod-tag{display:inline-block;font-weight:500;padding:0.15rem 0.5rem;border-radius:5px;margin-bottom:0.2rem}
+.mod-1{background:rgba(230,150,30,0.12)}
+.mod-2{background:rgba(230,210,30,0.15)}
+.mod-3{background:rgba(120,150,180,0.12)}
+.mod-4{background:rgba(255,80,80,0.08)}
+.mod-5{background:rgba(120,140,160,0.1)}
+
+.hl-gray{background:rgba(120,140,160,0.12);padding:0.15rem 0.4rem;border-radius:5px}
 
 .lesson-actions{position:fixed;bottom:0;left:0;right:0;padding:1rem 2rem;background:rgba(240,244,248,0.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);display:flex;flex-direction:column;gap:0.8rem;z-index:40}
 .btn-done{width:100%;display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.85rem;background:rgba(42,200,120,0.08);border:1.5px solid rgba(42,200,120,0.3);border-radius:10px;font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1a8a50;cursor:pointer;transition:all 0.2s}
@@ -93,7 +101,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
     <span>/</span>
     <a href="course-vibecoding.html">Вайбкодинг с 0</a>
     <span>/</span>
-    <strong>Что реально можно собрать прямо сейчас</strong>
+    <strong>Как устроен курс и чего ожидать</strong>
   </div>
 
   <div class="lesson-progress">
@@ -103,10 +111,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
         <span class="progress-dot">·</span>
         <span class="progress-module-name">Вайбкодинг без страха</span>
       </div>
-      <div class="progress-title">Урок 3 из 31</div>
+      <div class="progress-title">Урок 5 из 31</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar"><div class="progress-fill"></div></div>
-        <span class="progress-pct">10%</span>
+        <span class="progress-pct">16%</span>
       </div>
     </div>
   </div>
@@ -116,97 +124,92 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
       <span class="lesson-badge">Теория</span>
       <span class="lesson-duration">⏱ 10 мин</span>
     </div>
-    <h1 class="lesson-title">3. Что реально можно собрать прямо сейчас</h1>
+    <h1 class="lesson-title">5. Как устроен курс и чего ожидать</h1>
 
     <div class="lesson-body">
 
-      <p>Когда в каждом втором посте в соцсетях говорят про «я собрал сайт за 2 часа с помощью ИИ», первое, что приходит в голову: кривая страничка с текстом и одной кнопкой. Что-то простое и несерьёзное.</p>
-      <p>Давайте посмотрим, как обстоят дела на самом деле.</p>
+      <p>Прежде чем погружаться в практику, давай проговорим, как всё устроено. Чтобы не было сюрпризов и лишней тревоги.</p>
 
-      <h2>Сайты и лендинги</h2>
+      <h2>Структура: 5 модулей — от нуля до результата</h2>
 
-      <p>Самый частый старт. Визитка для специалиста, лендинг для услуги, страница для мероприятия, портфолио.</p>
-      <p>Причём не шаблонные страницы из конструктора, а полноценные страницы с индивидуальным дизайном, адаптацией под телефоны и нормальной вёрсткой.<br>Время: от 30 минут до пары часов — в зависимости от сложности.</p>
+      <p>Курс идёт от простого к сложному. Каждый модуль — следующий шаг. Без перескоков, без «а теперь вернёмся к теме из третьего урока».</p>
 
-      <h2>Рабочие инструменты</h2>
+      <div class="mod"><span class="mod-tag mod-1"><strong>Модуль 1</strong> (сейчас)</span> — Знакомимся с вайбкодингом и ставим инструменты.</div>
+      <div class="mod"><span class="mod-tag mod-2"><strong>Модуль 2</strong></span> — Учимся говорить с ИИ. Это ключевой навык: формулируешь точно — получаешь точно.</div>
+      <div class="mod"><span class="mod-tag mod-3"><strong>Модуль 3</strong></span> — Делаем первый проект. Настоящий, с нуля. К концу модуля — работающий проект.</div>
+      <div class="mod"><span class="mod-tag mod-4"><strong>Модуль 4</strong></span> — Публикуем проект в интернет. Финальный шаг. Домен, хостинг, запуск. Всё по шагам.</div>
+      <div class="mod"><span class="mod-tag mod-5"><strong>Модуль 5</strong></span> — Аналитика. Подключаем метрики.</div>
 
-      <p>Вайбкодинг отлично подходит для мелких, но нужных инструментов, которые лень (или дорого) заказывать:</p>
+      <p>Каждый модуль строится на предыдущем. Пропускать — можно, но не стоит: потеряешь контекст.</p>
+
+      <h2>Формат: коротко, по делу, в своём темпе</h2>
+
+      <p>Уроки — текстовые, с картинками и схемами. Местами — короткие видео. Никаких часовых лекций.</p>
+
+      <p>Большинство уроков — это 5–10 минут чтения. Иногда чуть больше, если есть практика.</p>
+
+      <p>Жёстких <strong>дедлайнов</strong> нет. Проходишь когда удобно. Но лучше — регулярно, хотя бы по 20–30 минут через день. Так материал лучше укладывается.</p>
+
+      <h2>Что от тебя потребуется</h2>
+
       <ul>
-        <li>Калькулятор стоимости услуг — для клиента на сайте.</li>
-        <li>Генератор коммерческих предложений — вбиваешь данные, получаешь PDF.</li>
-        <li>Форма-бриф для заказчика — с логикой, подсказками и валидацией.</li>
-        <li>Мини-CRM — таблица клиентов с фильтрами и статусами.</li>
+        <li>Компьютер с доступом в интернет.</li>
+        <li>Готовность пробовать, а не только читать.</li>
+        <li>Терпение на первые шаги — когда кажется, что «пока непонятно, зачем это». Станет понятно.</li>
       </ul>
-      <p>То есть не массивные продукты на миллион пользователей типа Avito, банковских приложений или VK. Это <strong>точечные решения под конкретные задачи</strong> — то, что раньше требовало разработчика, а теперь можно собрать за вечер.</p>
 
-      <h2>Инструменты для себя</h2>
+      <p><span class="hl-gray">Не потребуется:</span> опыт в программировании, знание технологий, мощный компьютер.</p>
+
+      <h2>Что делать, если застрял</h2>
+
+      <p>Застревать — нормально. Это часть процесса. Вот что поможет:</p>
 
       <ul>
-        <li>Планер дня или недели — под свою систему, а не «как надо в Notion».</li>
-        <li>Трекер привычек — с нужными тебе параметрами.</li>
-        <li>Персональный дашборд — ключевые метрики на одном экране.</li>
-        <li>Мини-приложение для подсчёта чего угодно — калорий, бюджета, задач.</li>
+        <li>Перечитай урок. Часто ответ уже там — просто мозг не зацепился с первого раза.</li>
+        <li>Попробуй сделать ровно то, что написано — без импровизаций. Импровизации будут позже.</li>
+        <li>Если совсем непонятно — напиши в чат клуба. Мы с радостью поможем и ответим.</li>
       </ul>
-      <p>Здесь кайф в том, что ты делаешь <strong>ровно то, что нужно тебе</strong>. Не подстраиваешься под чужой шаблон.</p>
 
-      <h2>ИИ-помощники</h2>
+      <p>Главное — не бросай на полпути.</p>
 
-      <p>Можно собирать инструменты, которые сами используют AI внутри:</p>
-      <ul>
-        <li>Бот-помощник, который отвечает на типовые вопросы клиентов.</li>
-        <li>Генератор текстов для соцсетей — с учётом тональности бренда.</li>
-        <li>Инструмент для обработки и сортировки данных.</li>
-      </ul>
-      <p>Да, с помощью ИИ можно собирать штуки, которые сами используют AI. Рекурсия? Немного. Но работает.</p>
+      <p><strong>Вайбкодинг</strong> — один из тех навыков, где прогресс нелинейный: сначала кажется, что ничего не происходит, потом — щелчок, и всё встаёт на место.</p>
 
-      <h2>И всё это — без написания кода?</h2>
+      <h2>Одно правило</h2>
 
-      <p>Без написания кода вручную — да. ИИ генерирует код по твоим описаниям. Ты направляешь, уточняешь, улучшаешь.</p>
-      <p>Конечно, результат зависит от того, насколько точно ты ставишь задачу. Именно для этого в курсе есть целый модуль по общению с AI. Но базовый уровень — доступен уже сейчас, с минимальной подготовкой.</p>
-
-      <h2>Главное, что нужно понять</h2>
-
-      <div class="hl-pink">Вайбкодинг — это не про «маленькие игрушечные проектики».</div>
-      <div class="hl-orange">Это про <strong>реальные рабочие инструменты</strong>, которые делают жизнь проще, работу быстрее, а бизнес — дешевле.</div>
-
-      <p>И масштаб — на твой выбор. Хочешь сделать одну страницу — отлично. Хочешь собрать полноценный сервис — тоже можно. Дальше по курсу разберёмся, как выбрать правильный масштаб.</p>
+      <p><strong>Делай, а не просто читай</strong>. Пассивное чтение даёт «понимание темы». Практика даёт навык. А навык — это то, за чем ты сюда пришёл.</p>
 
     </div>
   </div>
 </div>
 
 <div class="lesson-actions">
-  <button class="btn-done" >✓ Урок пройден</button>
+  <button class="btn-done">✓ Урок пройден</button>
   <div class="lesson-nav">
-    <a class="btn-prev" href="lesson-2-vibecoding.html">
+    <a class="btn-prev" href="lesson-4-why.html">
       <span class="btn-prev-icon">‹</span>
       <div class="btn-prev-info">
         <span class="btn-prev-label">Назад</span>
-        <span class="btn-prev-title">Что такое вайбкодинг (по-человечески)</span>
+        <span class="btn-prev-title">Зачем это тебе: жизнь, работа, деньги</span>
       </div>
     </a>
-    <a class="btn-next" href="#" onclick="event.preventDefault();goNext()">
+    <a class="btn-next" href="lesson-6-starter-kit.html" onclick="event.preventDefault();goNext()">
       <div class="btn-next-info">
         <span class="btn-next-label">Далее</span>
-        <span class="btn-next-title">Зачем это тебе: жизнь, работа, деньги</span>
+        <span class="btn-next-title">Стартовый набор за 15 минут</span>
       </div>
       <span style="font-size:1.1rem">›</span>
     </a>
   </div>
 </div>
 
-
 <script>
-const LESSON_ID = 'lesson-3';
-const NEXT_URL = 'lesson-4-why.html';
+const LESSON_ID = 'lesson-5';
+const NEXT_URL = 'lesson-6-starter-kit.html';
 const TOTAL = 31;
 
-// Check if already done on load
 window.addEventListener('DOMContentLoaded', () => {
   const done = JSON.parse(localStorage.getItem('storch_progress') || '[]');
-  if (done.includes(LESSON_ID)) {
-    markDoneUI();
-  }
+  if (done.includes(LESSON_ID)) markDoneUI();
 });
 
 function markDoneUI() {
@@ -221,7 +224,6 @@ function markDoneUI() {
 }
 
 function goNext() {
-  // Mark lesson as done
   const done = JSON.parse(localStorage.getItem('storch_progress') || '[]');
   if (!done.includes(LESSON_ID)) {
     done.push(LESSON_ID);

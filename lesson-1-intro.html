@@ -167,17 +167,47 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 </div>
 
 <div class="lesson-actions">
-  <button class="btn-done" onclick="markDone(this)">Урок пройден</button>
-  <a class="btn-next" href="lesson-2-vibecoding.html">
+  <button class="btn-done">Урок пройден</button>
+  <a class="btn-next" href="lesson-2-vibecoding.html" onclick="event.preventDefault();goNext()">
     <span class="btn-next-label">Далее</span>
     <span class="btn-next-title">Что такое вайбкодинг (по-человечески)</span>
   </a>
 </div>
 
+
 <script>
-function markDone(btn) {
-  btn.classList.toggle('done');
-  btn.textContent = btn.classList.contains('done') ? '✓ Урок пройден' : 'Урок пройден';
+const LESSON_ID = 'lesson-1';
+const NEXT_URL = 'lesson-2-vibecoding.html';
+const TOTAL = 31;
+
+// Check if already done on load
+window.addEventListener('DOMContentLoaded', () => {
+  const done = JSON.parse(localStorage.getItem('storch_progress') || '[]');
+  if (done.includes(LESSON_ID)) {
+    markDoneUI();
+  }
+});
+
+function markDoneUI() {
+  const btn = document.querySelector('.btn-done');
+  if (btn) {
+    btn.textContent = '✓ Урок пройден';
+    btn.style.background = 'rgba(42,200,120,0.15)';
+    btn.style.borderColor = 'rgba(42,200,120,0.5)';
+    btn.style.cursor = 'default';
+    btn.onclick = null;
+  }
+}
+
+function goNext() {
+  // Mark lesson as done
+  const done = JSON.parse(localStorage.getItem('storch_progress') || '[]');
+  if (!done.includes(LESSON_ID)) {
+    done.push(LESSON_ID);
+    localStorage.setItem('storch_progress', JSON.stringify(done));
+  }
+  markDoneUI();
+  if (NEXT_URL) window.location.href = NEXT_URL;
 }
 </script>
 </body>

@@ -53,6 +53,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .module.open .module-lessons{display:block}
 
 .lesson-link{text-decoration:none;color:inherit;background:rgba(42,127,168,0.04)}
+
+.lesson-link.completed .lesson-num{color:var(--accent);position:relative}
+.lesson-link.completed .lesson-num::after{content:'✓';position:absolute;top:-4px;right:-4px;font-size:8px;background:var(--accent);color:#fff;border-radius:50%;width:12px;height:12px;display:flex;align-items:center;justify-content:center;font-size:7px}
+
 .lesson-link:hover{background:rgba(42,127,168,0.08)}
 .lesson{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1.6rem;border-bottom:1px solid var(--border);font-size:0.85rem;gap:1rem}
 .lesson:last-child{border-bottom:none}
@@ -133,8 +137,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
         <a class="lesson lesson-link" href="lesson-1-intro.html"><div class="lesson-left"><span class="lesson-num">1</span><div class="lesson-info"><div class="lesson-name">Вводный урок</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></a>
         <a class="lesson lesson-link" href="lesson-2-vibecoding.html"><div class="lesson-left"><span class="lesson-num">2</span><div class="lesson-info"><div class="lesson-name">Что такое вайбкодинг (по-человечески)</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></a>
         <a class="lesson lesson-link" href="lesson-3-what-to-build.html"><div class="lesson-left"><span class="lesson-num">3</span><div class="lesson-info"><div class="lesson-name">Что реально можно собрать прямо сейчас</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></a>
-        <div class="lesson"><div class="lesson-left"><span class="lesson-num">4</span><div class="lesson-info"><div class="lesson-name">Зачем это тебе: жизнь, работа, деньги</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></div>
-        <div class="lesson"><div class="lesson-left"><span class="lesson-num">5</span><div class="lesson-info"><div class="lesson-name">Как устроен курс и чего ожидать</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></div>
+        <a class="lesson lesson-link" href="lesson-4-why.html"><div class="lesson-left"><span class="lesson-num">4</span><div class="lesson-info"><div class="lesson-name">Зачем это тебе: жизнь, работа, деньги</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></a>
+        <a class="lesson lesson-link" href="lesson-5-course-structure.html"><div class="lesson-left"><span class="lesson-num">5</span><div class="lesson-info"><div class="lesson-name">Как устроен курс и чего ожидать</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~10 мин</span></a>
         <div class="lesson"><div class="lesson-left"><span class="lesson-num">6</span><div class="lesson-info"><div class="lesson-name">Стартовый набор за 15 минут</div><div class="lesson-type">Практика</div></div></div><span class="lesson-duration">~15 мин</span></div>
         <div class="lesson"><div class="lesson-left"><span class="lesson-num">7</span><div class="lesson-info"><div class="lesson-name">Ты готов. Вот что будет дальше</div><div class="lesson-type">Теория</div></div></div><span class="lesson-duration">~5 мин</span></div>
       </div>
@@ -269,5 +273,31 @@ function toggleModule(el) {
   el.classList.toggle('open');
 }
 </script>
+
+<script>
+(function() {
+  const done = JSON.parse(localStorage.getItem('storch_progress') || '[]');
+  const TOTAL = 31;
+
+  // Mark completed lessons
+  document.querySelectorAll('.lesson-link').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    const id = href.replace('.html','').replace('lesson-1-intro','lesson-1')
+                   .replace('lesson-2-vibecoding','lesson-2')
+                   .replace('lesson-3-what-to-build','lesson-3');
+    if (done.includes(id)) el.classList.add('completed');
+  });
+
+  // Update progress bar and counter
+  const pct = Math.round((done.length / TOTAL) * 100);
+  const fill = document.querySelector('.sidebar-progress-fill');
+  const pctEl = document.querySelector('.sidebar-progress-pct');
+  const subEl = document.querySelector('.sidebar-progress-sub');
+  if (fill) fill.style.width = pct + '%';
+  if (pctEl) pctEl.textContent = pct + '%';
+  if (subEl) subEl.textContent = done.length + ' из ' + TOTAL + ' урока';
+})();
+</script>
+
 </body>
 </html>
