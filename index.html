@@ -60,13 +60,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-co
 
 .hero-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,25,45,0.02) 0%,rgba(15,25,45,0.08) 78%,rgba(13,31,45,0.42) 100%);pointer-events:none;z-index:0}
 .hero-edge-fade{position:absolute;left:0;right:0;bottom:0;height:18%;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);-webkit-mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,1) 75%);mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,1) 75%);background:linear-gradient(to bottom,transparent,#0d1f2d 100%);pointer-events:none;z-index:1}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:120px 3rem 5rem;max-width:600px;margin:0 0 0 6%;position:relative;z-index:1;width:100%}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:120px 3rem 5rem;max-width:600px;margin:0 0 0 6%;position:relative;z-index:1;width:100%}
 .hero-text{animation:fadeUp 0.8s ease both}
 .hero-eyebrow{display:flex;align-items:center;gap:0.8rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--khaki);margin-bottom:2rem}
 .hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--khaki)}
 .hero-name{font-family:var(--serif);font-size:clamp(3rem,5vw,4.5rem);font-weight:400;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.6rem}
 .hero-name em{font-style:italic;color:var(--khaki);display:block}
-.hero-bio{font-size:1.1rem;color:#ffffff;max-width:420px;line-height:1.8;margin-bottom:2.5rem}
+.hero-bio{font-size:1.1rem;color:#ffffff;max-width:420px;line-height:1.8;margin-bottom:2.5rem;text-shadow:0 1px 12px rgba(0,0,0,0.45),0 1px 2px rgba(0,0,0,0.3)}
 .hero-cta{display:inline-block;font-family:'Unbounded',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);background:rgba(13,33,55,0.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);text-decoration:none;padding:0.85rem 2.4rem;border-radius:2px;margin-bottom:2rem;transition:background 0.2s,transform 0.15s,border-color 0.2s}
 .hero-cta:hover{background:rgba(13,33,55,0.65);border-color:rgba(255,255,255,0.3);transform:translateY(-1px)}
 .socials{display:flex;flex-wrap:wrap;gap:0.7rem}
@@ -407,7 +407,7 @@ footer{max-width:1100px;margin:0 auto;padding:2.5rem 3rem;border-top:1px solid v
 .quote-glass-wrap{
   padding:1.6rem 3rem;display:flex;justify-content:center;
 }
-.quote-glass-wrap--first{padding-top:5rem}
+.quote-glass-wrap--first{padding-top:6.5rem;scroll-margin-top:90px}
 .quote-glass-card{
   position:relative;z-index:1;max-width:560px;width:100%;
   text-align:center;padding:2.2rem 2.4rem;border-radius:18px;
@@ -503,12 +503,19 @@ footer{max-width:1100px;margin:0 auto;padding:2.5rem 3rem;border-top:1px solid v
   .section-title{font-size:1.2rem}
   .quote-block{padding:2.5rem 1.4rem}
   .quote-glass-wrap{padding:3rem 1.4rem}
-  .quote-glass-wrap--first{padding-top:3.5rem}
+  .quote-glass-wrap--first{padding-top:5rem;scroll-margin-top:90px}
   .quote-glass-card{padding:1.6rem 1.5rem;max-width:100%}
   .quote-glass-card--soft{padding:1.4rem 1.3rem}
 
   /* BOOKS */
-  .books-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto;gap:1rem}
+  .books-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;gap:0.9rem}
+  .book-card{display:flex;flex-direction:row;align-items:flex-start;gap:0.9rem;padding:0.7rem}
+  .book-cover{width:110px;flex-shrink:0;aspect-ratio:2/3;height:auto}
+  .book-card-body{padding:0.1rem 0 0}
+  .book-title{font-size:0.95rem;line-height:1.3;margin-bottom:0.25rem}
+  .book-author{font-size:0.8rem;margin-bottom:0.5rem}
+  .book-desc{font-size:0.82rem;line-height:1.5}
+  .book-badge{top:0.4rem;right:0.4rem;font-size:0.5rem;padding:0.2rem 0.5rem}
 
   /* CALI */
   .cali-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto}
@@ -624,9 +631,7 @@ footer{max-width:1100px;margin:0 auto;padding:2.5rem 3rem;border-top:1px solid v
 <noscript><div><img src="https://mc.yandex.ru/watch/109490800" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </head>
-<body>
-
-<a id="top"></a>
+<body id="top">
 <nav>
   <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
   <div class="nav-menu nav-menu--left">
